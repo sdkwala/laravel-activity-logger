@@ -1,0 +1,50 @@
+{
+  "name": "sdkwala/laravel-activity-logger",
+  "description": "A Laravel package to log model events (created, updated, deleted) to a database table with hybrid model registration.",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "laravel",
+    "activity",
+    "logger",
+    "audit",
+    "logging",
+    "model-events"
+  ],
+  "authors": [
+    {
+      "name": "Sdkwala",
+      "email": "info@sdkwala.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "illuminate/support": "^9.0|^10.0|^11.0|^12.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0",
+    "phpunit/phpunit": "^9.5.10|^10.0.7|^11.5.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Sdkwala\\ActivityLogger\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Sdkwala\\ActivityLogger\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Sdkwala\\ActivityLogger\\ActivityLoggerServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

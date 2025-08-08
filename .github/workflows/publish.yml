@@ -1,0 +1,29 @@
+name: Publish to Packagist
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd, iconv, intl
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Run tests
+        run: vendor/bin/phpunit
+
+      - name: Publish to Packagist
+        run: |
+          composer config http-basic.repo.packagist.com token ${{ secrets.PACKAGIST_TOKEN }}
+          composer publish --no-interaction
